@@ -1,0 +1,23 @@
+<resources>
+
+    <!--app-->
+    <string name="app_name">PhotoGallery</string>
+
+    <!--tittles-->
+    <string name="tittle_wall_photos">Wall photos</string>
+
+    <!--errors-->
+    <string name="error_internet_connection">No Internet Connection</string>
+    <string name="error_something_bad_happened">Something bad happened</string>
+
+    <!--textView-->
+    <string name="textView_firstName_lastName">%1$s %2$s</string>
+    <string name="text_view_userName_cameraModel">%1$s ( %2$s )</string>
+
+    <!--fab sharing-->
+    <string name="sharing_image_with">Share image with…</string>
+
+    <!--button-->
+    <string name="bt_reload">Reload</string>
+
+</resources>
