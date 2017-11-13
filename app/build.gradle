@@ -50,10 +50,6 @@ dependencies {
 
 
     //Retrofit
-
-//    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-//    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-//    implementation 'com.squareup.retrofit2:adapter-rxjava:2.3.0'
     implementation network.retrofit
     implementation network.gsonConverter
     implementation network.rxJavaAdapter
@@ -63,6 +59,11 @@ dependencies {
     //RxJava
     implementation rxJava2.rxJava
     implementation rxJava2.rxAndroid
+
+    //Persistence
+    implementation room.runtime
+    annotationProcessor room.compiler
+    implementation room.rxJava2
 
 
 

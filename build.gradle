@@ -68,8 +68,8 @@ ext.network = [
 
 ext.room = [
         runtime: "android.arch.persistence.room:runtime:$versions.room",
-        compiler: "android.arch.persistence.room:compiler$versions.room",
-        rxJava2: "android.arch.persistence.room:rxjava2$versions.room"
+        compiler: "android.arch.persistence.room:compiler:$versions.room",
+        rxJava2: "android.arch.persistence.room:rxjava2:$versions.room"
 ]
 
 ext.lombok = [
