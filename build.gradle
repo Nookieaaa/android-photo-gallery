@@ -4,11 +4,10 @@ buildscript {
     repositories {
         jcenter()
         google()
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.0'
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -18,8 +17,71 @@ allprojects {
     repositories {
         jcenter()
         google()
+        maven { url 'https://maven.google.com' }
     }
 }
+
+ext.versions = [
+        androidSupport: "26.1.0",
+        constraintLayout: "1.0.2",
+        rxJava2: "2.1.6",
+        rxAndroid: "2.0.1",
+        retrofit: "2.3.0",
+        loggingInterceptor: "3.9.0",
+        room: "1.0.0",
+        glide: "3.7.0",
+        parceler:"1.1.9",
+        bottomsheet: "1.5.1",
+        imageZoom: "2.3.0",
+        progress: "1.7",
+        lombok: "1.16.18"
+]
+
+ext.support = [
+        appcompat: "com.android.support:appcompat-v7:$versions.androidSupport",
+        design: "com.android.support:design:$versions.androidSupport",
+        cardView: "com.android.support:cardview-v7:$versions.androidSupport",
+        recyclerView: "com.android.support:recyclerview-v7:$versions.androidSupport",
+        constraintLayout: "com.android.support.constraint:constraint-layout:$versions.constraintLayout"
+]
+
+ext.ui = [
+        bottomsheetCore: "com.flipboard:bottomsheet-core:$versions.bottomSheet",
+        bottomsheetCommons: "com.flipboard:bottomsheet-commons:$versions.bottomsheet",
+        imageZoom: "it.sephiroth.android.library.imagezoom:imagezoom:$versions.imageZoom",
+        progress: "com.pnikosis:materialish-progress:$versions.progress"
+]
+
+ext.rxJava2 = [
+        rxJava: "io.reactivex.rxjava2:rxjava:$versions.rxJava2",
+        rxAndroid: "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid",
+]
+
+ext.network = [
+        retrofit: "com.squareup.retrofit2:retrofit:$versions.retrofit",
+        gsonConverter: "com.squareup.retrofit2:converter-gson:$versions.retrofit",
+        rxJavaAdapter: "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit",
+        loggingInterceptor: "com.squareup.okhttp3:logging-interceptor:$versions.loggingInterceptor",
+        glide: "com.github.bumptech.glide:glide:$versions.glide",
+        okhttp3Downloader: "com.jakewharton.picasso:picasso2-okhttp3-downloader:$versions.okhttp3Downloader"
+]
+
+ext.room = [
+        runtime: "android.arch.persistence.room:runtime:$versions.room",
+        compiler: "android.arch.persistence.room:compiler$versions.room",
+        rxJava2: "android.arch.persistence.room:rxjava2$versions.room"
+]
+
+ext.lombok = [
+        runtime: "org.projectlombok:lombok:$versions.lombok",
+        compiler: "org.projectlombok:lombok:$versions.lombok",
+]
+
+ext.parceler = [
+        core:"org.parceler:parceler-api:$versions.parceler",
+        compiler: "org.parceler:parceler:$versions.parceler"
+]
+
 
 task clean(type: Delete) {
     delete rootProject.buildDir
