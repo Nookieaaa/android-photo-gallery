@@ -3,11 +3,12 @@ package com.photogallery.app.domain.interactor;
 
 import com.photogallery.app.data.model.Wall;
 
-import rx.Subscriber;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.observers.DisposableObserver;
+
 
 public interface GetWallPhotosUseCase {
 
-    void execute(Subscriber<Wall> subscriber, int page);
+    Disposable execute(DisposableObserver<Wall> subscriber, int page);
 
-    void unSubscribe();
 }

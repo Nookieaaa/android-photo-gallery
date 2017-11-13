@@ -5,7 +5,8 @@ import com.photogallery.app.data.mapper.WallMapper;
 import com.photogallery.app.data.model.Wall;
 import com.photogallery.app.data.network.api.WallPhotoRestApiImpl;
 
-import rx.Observable;
+import io.reactivex.Observable;
+
 
 public class WallPhotoRepositoryImpl implements WallPhotoRepository {
 

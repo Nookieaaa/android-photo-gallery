@@ -6,6 +6,9 @@ import com.photogallery.app.domain.interactor.impl.GetWallPhotosUseCaseImpl;
 import com.photogallery.app.data.model.Wall;
 import com.photogallery.app.presentation.util.ErrorHandler;
 
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+
 public class WallPhotosPresenterImpl implements WallPhotosPresenter {
 
     private Wall wall;
@@ -17,6 +20,7 @@ public class WallPhotosPresenterImpl implements WallPhotosPresenter {
 
     private WallView view;
     private GetWallPhotosUseCase useCase = new GetWallPhotosUseCaseImpl();
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
 
     @Override
@@ -28,14 +32,14 @@ public class WallPhotosPresenterImpl implements WallPhotosPresenter {
     public void loadFirstPage() {
         view.showLoading();
         setLoading(true);
-        useCase.execute(new WallPhotosSubscriber(), FIRST_PAGE);
+        add(useCase.execute(new WallPhotosSubscriber(), FIRST_PAGE));
     }
 
     @Override
     public void loadNextPage() {
         this.loading = true;
         int nextPage = currentPage + DIFFERENCE_NEXT_PAGE;
-        useCase.execute(new WallPhotosSubscriber(), nextPage);
+        add(useCase.execute(new WallPhotosSubscriber(), nextPage));
     }
 
     public int getCurrentPage() {
@@ -54,14 +58,18 @@ public class WallPhotosPresenterImpl implements WallPhotosPresenter {
         this.loading = loading;
     }
 
+    private void add(Disposable disposable){
+        compositeDisposable.add(disposable);
+    }
+
     @Override
     public void onStop() {
-        useCase.unSubscribe();
+        compositeDisposable.clear();
     }
 
     private class WallPhotosSubscriber extends BaseSubscriber<Wall> {
         @Override
-        public void onCompleted() {
+        public void onComplete() {
             view.hideLoading();
             setLoading(false);
         }

@@ -1,12 +1,12 @@
 package com.photogallery.app.domain.interactor;
 
-import rx.Subscriber;
 
+import io.reactivex.observers.DisposableObserver;
 
-public abstract class BaseSubscriber<T> extends Subscriber<T>{
+public abstract class BaseSubscriber<T> extends DisposableObserver<T> {
 
     @Override
-    public void onCompleted() {
+    public void onComplete() {
 
     }
 

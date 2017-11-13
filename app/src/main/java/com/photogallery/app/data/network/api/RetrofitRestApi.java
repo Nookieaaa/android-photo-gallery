@@ -1,8 +1,8 @@
 package com.photogallery.app.data.network.api;
 
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
-import rx.Observable;
 
 import com.photogallery.app.data.dto.*;
 import com.photogallery.app.data.network.Urls;
