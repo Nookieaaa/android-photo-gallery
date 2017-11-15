@@ -19,5 +19,6 @@
 
     <!--button-->
     <string name="bt_reload">Reload</string>
+    <string name="favorites">Favorites</string>
 
 </resources>

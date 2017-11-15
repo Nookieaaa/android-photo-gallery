@@ -1,6 +1,8 @@
 
 package com.photogallery.app.data.dto;
 
+import android.arch.persistence.room.Entity;
+
 import com.google.gson.annotations.SerializedName;
 
 import lombok.AllArgsConstructor;

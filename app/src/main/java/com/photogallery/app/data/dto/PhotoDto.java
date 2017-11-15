@@ -1,5 +1,9 @@
 package com.photogallery.app.data.dto;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +19,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class PhotoDto {
-
     @SerializedName("camera")
     private String camera;
     @SerializedName("name")
@@ -23,9 +26,9 @@ public class PhotoDto {
     @SerializedName("image_url")
     private String imageUrl;
     @SerializedName("images")
+    @Ignore
     private List<ImageDto> images = new ArrayList<>();
     @SerializedName("user")
+    @Ignore
     private UserDto user;
-
-
 }

@@ -3,15 +3,16 @@ package com.photogallery.app.data.mapper;
 import com.photogallery.app.data.dto.WallDto;
 import com.photogallery.app.data.model.Wall;
 
+import io.reactivex.Observable;
+
 public class WallMapper {
 
-    public static Wall transfer(WallDto wallDto){
+    public static Observable<Wall> transfer(WallDto wallDto){
 
-        return Wall.builder()
+        return Observable.just(Wall.builder()
                 .currentPage(wallDto.getCurrentPage())
                 .totalPages(wallDto.getTotalPages())
-                .totalItems(wallDto.getTotalItems())
-                .photos(PhotoMapper.transfer(wallDto.getPhotos()))
-                .build();
+                .totalItems(wallDto.getTotalItems()))
+                .zipWith(PhotoMapper.transfer(wallDto.getPhotos()), (wallBuilder, photos) -> wallBuilder.photos(photos).build());
     }
 }

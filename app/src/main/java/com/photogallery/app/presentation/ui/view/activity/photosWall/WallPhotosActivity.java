@@ -1,25 +1,28 @@
 package com.photogallery.app.presentation.ui.view.activity.photosWall;
 
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.photogallery.app.R;
 import com.photogallery.app.data.model.Photo;
 import com.photogallery.app.data.model.Wall;
+import com.photogallery.app.presentation.ui.adapter.OnPhotoClickListener;
 import com.photogallery.app.presentation.ui.adapter.WallPhotosAdapter;
 import com.photogallery.app.presentation.ui.view.activity.base.BaseActivity;
+import com.photogallery.app.presentation.ui.view.activity.favorites.FavoritesActivity;
 import com.photogallery.app.presentation.ui.view.activity.photo.PhotoActivity;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class WallPhotosActivity extends BaseActivity implements WallView, WallPhotosAdapter.OnPhotoClickListener {
+public class WallPhotosActivity extends BaseActivity implements WallView, OnPhotoClickListener {
 
     private WallPhotosPresenter presenter;
     private WallPhotosAdapter adapter;
@@ -50,6 +53,21 @@ public class WallPhotosActivity extends BaseActivity implements WallView, WallPh
         presenter = new WallPhotosPresenterImpl();
         presenter.setView(this);
         initWallPhotosAdapter();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.wall_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==R.id.favorites){
+            startActivity(FavoritesActivity.getStartIntent(this));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -124,8 +142,6 @@ public class WallPhotosActivity extends BaseActivity implements WallView, WallPh
 
     @Override
     public void onPhotoClick(Photo photo) {
-        Intent intent = new Intent(this, PhotoActivity.class);
-        intent.putExtra(PhotoActivity.EXTRA_PHOTO, photo);
-        startActivity(intent);
+        startActivity(PhotoActivity.getStartIntent(this, photo));
     }
 }

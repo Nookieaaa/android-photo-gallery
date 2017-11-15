@@ -4,15 +4,18 @@ import com.photogallery.app.data.dto.PhotoDto;
 import com.photogallery.app.data.model.Photo;
 
 import java.util.List;
-import java.util.stream.Collectors;
+
+import io.reactivex.Observable;
 
 
 public class PhotoMapper {
 
     private static final int FIRST = 1;
 
-    public static List<Photo> transfer(List<PhotoDto> photoEntities) {
-        return photoEntities.stream().map(PhotoMapper::transfer).collect(Collectors.toList());
+    public static Observable<List<Photo>> transfer(List<PhotoDto> photoEntities) {
+        return Observable.fromIterable(photoEntities)
+                .map(PhotoMapper::transfer)
+                .buffer(photoEntities.size());
     }
 
     public static Photo transfer(PhotoDto photoEntity) {

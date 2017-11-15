@@ -58,10 +58,6 @@ public class WallPhotosAdapter extends RecyclerView.Adapter<WallPhotosAdapter.Ph
         holder.bindPhotoImage(photo.getSmallImageUrl());
     }
 
-    public interface OnPhotoClickListener {
-        void onPhotoClick(Photo photo);
-    }
-
     class PhotoViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.iv_photo)

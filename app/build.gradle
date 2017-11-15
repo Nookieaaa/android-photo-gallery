@@ -65,6 +65,12 @@ dependencies {
     annotationProcessor room.compiler
     implementation room.rxJava2
 
+    //Permissions
+    implementation (permissions.runtime) {
+        exclude module: "support-v13"
+    }
+    annotationProcessor permissions.compiler
+
 
 
 }

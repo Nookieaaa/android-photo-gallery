@@ -13,7 +13,7 @@ public class WallPhotoRepositoryImpl implements WallPhotoRepository {
 
     @Override
     public Observable<Wall> getWallPhotos(int page) {
-        return WallPhotoRestApiImpl.getInstance().getWallPhotos(page).map(WallMapper::transfer);
+        return WallPhotoRestApiImpl.getInstance().getWallPhotos(page).flatMap(WallMapper::transfer);
     }
 
 }

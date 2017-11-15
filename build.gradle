@@ -34,7 +34,8 @@ ext.versions = [
         bottomsheet: "1.5.1",
         imageZoom: "2.3.0",
         progress: "1.7",
-        lombok: "1.16.18"
+        lombok: "1.16.18",
+        permissionDispatcher: "3.0.1"
 ]
 
 ext.support = [
@@ -80,6 +81,11 @@ ext.lombok = [
 ext.parceler = [
         core:"org.parceler:parceler-api:$versions.parceler",
         compiler: "org.parceler:parceler:$versions.parceler"
+]
+
+ext.permissions = [
+        runtime: "com.github.hotchemi:permissionsdispatcher:$versions.permissionDispatcher",
+        compiler: "com.github.hotchemi:permissionsdispatcher-processor:$versions.permissionDispatcher"
 ]
 
 
