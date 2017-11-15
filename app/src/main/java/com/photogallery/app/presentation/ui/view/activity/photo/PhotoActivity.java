@@ -307,9 +307,9 @@ public class PhotoActivity extends BaseActivity {
                 .subscribe(__ -> {
                 }, err -> {
                     err.printStackTrace();
-//                    compositeDisposable.clear();
+                    compositeDisposable.clear();
                 }, () -> {
-//                    compositeDisposable.clear();
+                    compositeDisposable.clear();
                 });
     }
 
